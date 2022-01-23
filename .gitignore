@@ -1,0 +1,8 @@
+ParsingStackoverflowRU/bin/
+ParsingStackoverflowRU/obj/
+ParsingStackoverflowRU.Tests/bin/
+ParsingStackoverflowRU.Tests/obj/
+.idea/
+.vs/
+*.user
+publish/

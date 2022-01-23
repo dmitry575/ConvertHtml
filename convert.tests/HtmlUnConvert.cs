@@ -29,7 +29,7 @@ namespace convert.tests
             Assert.AreEqual(result, res);
         }
 
-        [TestCase("comments_0_.ru.en.txt", "comments_0_.txt")]
+        [TestCase("Data/comments_0_.ru.en.txt", "Data/comments_0_.txt")]
         public void GetAfterTranslateFile(string filename,string fileBeforeTranslate)
         {
             var htmlUnConvert = new HtmlUnConvert("./", "./", "./");

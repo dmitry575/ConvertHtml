@@ -62,7 +62,8 @@ namespace convert
                     var html = GetUnClean(
                         GetUnGroup(GetAfterTranslate(translate), tags.Groups),
                         tags.Tags);
-
+                    html = html.Replace("<p> ", "<p>");
+                    html = html.Replace("<\\p> ", "<\\p>");
                     // save html
                     SaveDstResult(fileEntry, html);
                     success++;
@@ -133,6 +134,7 @@ namespace convert
                 {
                     throw new Exception($"not found key {key} for {tag.Value}");
                 }
+                result = result.Replace("[" + key + "] ", tag.Value);
                 result = result.Replace("[" + key + "]", tag.Value);
             }
 
@@ -157,6 +159,7 @@ namespace convert
                     throw new Exception($"not found key [{key}] for {tagsGroup.Value}");
                 }
 
+                result = result.Replace(" [" + key + "] ", tagsGroup.Value);
                 result = result.Replace("[" + key + "]", tagsGroup.Value);
             }
 

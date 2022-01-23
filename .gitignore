@@ -6,3 +6,8 @@ ParsingStackoverflowRU.Tests/obj/
 .vs/
 *.user
 publish/
+convert.tests/bin/
+convert.tests/obj/
+convert/bin/
+convert/obj/
+packages/

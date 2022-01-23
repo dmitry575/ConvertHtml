@@ -64,6 +64,10 @@ namespace convert
             {
                 try
                 {
+                    _htmlTags.Clear();
+                    _groupTags.Clear();
+                    _index = 1;
+
                     // get all content from file
                     var html = File.ReadAllText(fileEntry);
 
@@ -76,8 +80,7 @@ namespace convert
                     // save data for unconvert
                     SaveJsonFile(fileEntry, postfixFileData);
 
-                    _htmlTags.Clear();
-                    _groupTags.Clear();
+                    
                 }
                 catch (Exception e)
                 {
@@ -270,7 +273,7 @@ namespace convert
                 if (_tagsNotTranslate.Contains(node.Name) && node.Name != "#text")
                 {
                     _htmlTags.Add(_index, node.OuterHtml);
-                    HtmlNode child = HtmlNode.CreateNode($"[{PrefixTag}{_index}]");
+                    HtmlNode child = HtmlNode.CreateNode($" [{PrefixTag}{_index}] ");
                     _index++;
 
                     parentNode.InsertBefore(child, node);
@@ -288,7 +291,7 @@ namespace convert
                 {
 
                     _htmlTags.Add(_index, GetTagAttributs(node));
-                    HtmlNode newNode = HtmlNode.CreateNode($"[{PrefixTag}{_index}]");
+                    HtmlNode newNode = HtmlNode.CreateNode($" [{PrefixTag}{_index}] ");
                     _index++;
 
                     parentNode.InsertBefore(newNode, node);
@@ -297,7 +300,7 @@ namespace convert
                     if (!HtmlNode.IsEmptyElement(node.Name))
                     {
                         _htmlTags.Add(_index, GetTagClose(node));
-                        HtmlNode newNodeClose = HtmlNode.CreateNode($"[{PrefixTag}{_index}]");
+                        HtmlNode newNodeClose = HtmlNode.CreateNode($"[{PrefixTag}{_index}] ");
                         _index++;
                         parentNode.InsertAfter(newNodeClose, node);
                     }
